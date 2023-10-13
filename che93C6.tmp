@@ -1,0 +1,415 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwiyn5vuhvoog"]
+
+[ext_resource type="Texture2D" uid="uid://d3rivd4ov5tey" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/board.png" id="1_83c4u"]
+[ext_resource type="Script" path="res://chess_board.gd" id="1_pkdp3"]
+[ext_resource type="PackedScene" uid="uid://6sfhkduj3kgs" path="res://chess_piece.tscn" id="2_cdm48"]
+[ext_resource type="PackedScene" uid="uid://d1hj2m4eel0j" path="res://chess_piece_location.tscn" id="3_mjfpr"]
+
+[node name="ChessBoard" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_pkdp3")
+
+[node name="Board" type="Sprite2D" parent="."]
+position = Vector2(90, 90)
+texture = ExtResource("1_83c4u")
+metadata/_edit_lock_ = true
+
+[node name="ChessPieces" type="Node2D" parent="."]
+
+[node name="ChessPiece" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(13, 167)
+type = 5
+color = 1
+
+[node name="ChessPiece2" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(35, 167)
+type = 2
+color = 1
+
+[node name="ChessPiece3" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(57, 167)
+color = 1
+
+[node name="ChessPiece4" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(79, 167)
+type = 4
+color = 1
+
+[node name="ChessPiece5" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(101, 167)
+type = 1
+color = 1
+
+[node name="ChessPiece6" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(123, 167)
+color = 1
+
+[node name="ChessPiece7" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(145, 167)
+type = 2
+color = 1
+
+[node name="ChessPiece8" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(167, 167)
+type = 5
+color = 1
+
+[node name="ChessPiece9" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(13, 145)
+type = 3
+color = 1
+
+[node name="ChessPiece10" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(35, 145)
+type = 3
+color = 1
+
+[node name="ChessPiece11" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(57, 145)
+type = 3
+color = 1
+
+[node name="ChessPiece12" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(79, 145)
+type = 3
+color = 1
+
+[node name="ChessPiece13" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(101, 145)
+type = 3
+color = 1
+
+[node name="ChessPiece14" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(123, 145)
+type = 3
+color = 1
+
+[node name="ChessPiece15" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(145, 145)
+type = 3
+color = 1
+
+[node name="ChessPiece16" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(167, 145)
+type = 3
+color = 1
+
+[node name="ChessPiece17" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(13, 35)
+type = 3
+
+[node name="ChessPiece18" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(35, 35)
+type = 3
+
+[node name="ChessPiece19" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(57, 35)
+type = 3
+
+[node name="ChessPiece20" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(79, 35)
+type = 3
+
+[node name="ChessPiece21" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(101, 35)
+type = 3
+
+[node name="ChessPiece22" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(123, 35)
+type = 3
+
+[node name="ChessPiece23" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(145, 35)
+type = 3
+
+[node name="ChessPiece24" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(167, 35)
+type = 3
+
+[node name="ChessPiece25" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(13, 13)
+type = 5
+
+[node name="ChessPiece26" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(35, 13)
+type = 2
+
+[node name="ChessPiece27" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(57, 13)
+
+[node name="ChessPiece28" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(79, 13)
+type = 4
+
+[node name="ChessPiece29" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(101, 13)
+type = 1
+
+[node name="ChessPiece30" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(123, 13)
+
+[node name="ChessPiece31" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(145, 13)
+type = 2
+
+[node name="ChessPiece32" parent="ChessPieces" instance=ExtResource("2_cdm48")]
+position = Vector2(167, 13)
+type = 5
+
+[node name="ChessPieceLocations" type="Node2D" parent="."]
+
+[node name="ChessPieceLocation" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(13, 167)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation2" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(35, 167)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation3" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(57, 167)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation4" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(79, 167)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation5" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(101, 167)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation6" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(123, 167)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation7" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(145, 167)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation8" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(167, 167)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation9" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(13, 145)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation10" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(35, 145)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation11" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(57, 145)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation12" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(79, 145)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation13" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(101, 145)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation14" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(123, 145)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation15" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(145, 145)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation16" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(167, 145)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation17" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(13, 123)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation18" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(35, 123)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation19" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(57, 123)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation20" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(79, 123)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation21" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(101, 123)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation22" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(123, 123)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation23" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(145, 123)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation24" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(167, 123)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation25" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(13, 101)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation26" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(35, 101)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation27" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(57, 101)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation28" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(79, 101)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation29" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(101, 101)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation30" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(123, 101)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation31" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(145, 101)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation32" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(167, 101)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation33" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(13, 79)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation34" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(35, 79)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation35" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(57, 79)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation36" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(79, 79)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation37" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(101, 79)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation38" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(123, 79)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation39" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(145, 79)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation40" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(167, 79)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation41" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(13, 57)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation42" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(35, 57)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation43" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(57, 57)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation44" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(79, 57)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation45" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(101, 57)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation46" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(123, 57)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation47" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(145, 57)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation48" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(167, 57)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation49" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(13, 35)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation50" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(35, 35)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation51" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(57, 35)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation52" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(79, 35)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation53" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(101, 35)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation54" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(123, 35)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation55" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(145, 35)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation56" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(167, 35)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation57" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(13, 13)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation58" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(35, 13)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation59" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(57, 13)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation60" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(79, 13)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation61" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(101, 13)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation62" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(123, 13)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation63" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(145, 13)
+metadata/_edit_lock_ = true
+
+[node name="ChessPieceLocation64" parent="ChessPieceLocations" instance=ExtResource("3_mjfpr")]
+position = Vector2(167, 13)
+metadata/_edit_lock_ = true

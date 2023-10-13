@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwiyn5vuhvoog"]
+
+[ext_resource type="Texture2D" uid="uid://d3rivd4ov5tey" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/board.png" id="1_83c4u"]
+[ext_resource type="Script" path="res://chess_board.gd" id="1_pkdp3"]
+
+[node name="ChessBoard" type="Node2D"]
+script = ExtResource("1_pkdp3")
+
+[node name="Board" type="Sprite2D" parent="."]
+position = Vector2(90, 90)
+texture = ExtResource("1_83c4u")
+metadata/_edit_lock_ = true
+
+[node name="ChessPieces" type="Node2D" parent="."]
+
+[node name="ChessPieceLocations" type="Node2D" parent="."]

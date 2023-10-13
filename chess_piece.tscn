@@ -1,0 +1,81 @@
+[gd_scene load_steps=16 format=3 uid="uid://6sfhkduj3kgs"]
+
+[ext_resource type="Texture2D" uid="uid://ccmq1tbq1g4y6" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/black_bishop.png" id="1_o448e"]
+[ext_resource type="Script" path="res://chess_piece.gd" id="1_uvikv"]
+[ext_resource type="Texture2D" uid="uid://ciwqebaojjej6" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/black_king.png" id="2_i858l"]
+[ext_resource type="Texture2D" uid="uid://behqql36lcpnd" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/black_knight.png" id="3_kp3jm"]
+[ext_resource type="Texture2D" uid="uid://bbtr7hos5jrxw" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/black_pawn.png" id="4_726d7"]
+[ext_resource type="Texture2D" uid="uid://cha8eu74ht80f" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/black_queen.png" id="5_qho30"]
+[ext_resource type="Texture2D" uid="uid://dcdiu37c6agg" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/black_rook.png" id="6_1x3hb"]
+[ext_resource type="Texture2D" uid="uid://coh8g2qggjt0c" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/white_bishop.png" id="7_upmg2"]
+[ext_resource type="Texture2D" uid="uid://b3ykjdc85va6m" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/white_king.png" id="8_lcgkh"]
+[ext_resource type="Texture2D" uid="uid://bpk7lbn21sv4y" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/white_knight.png" id="9_phs0d"]
+[ext_resource type="Texture2D" uid="uid://ca6lodsrkr6h5" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/white_pawn.png" id="10_xvv48"]
+[ext_resource type="Texture2D" uid="uid://bwfyjv6k3gwd4" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/white_queen.png" id="11_mbpam"]
+[ext_resource type="Texture2D" uid="uid://t6chyluqwfdy" path="res://Pixel_Art_Chess_DevilsWorkshop_V04/chess/white_rook.png" id="12_aavlf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxr1d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o448e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i858l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kp3jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_726d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qho30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1x3hb")
+}],
+"loop": true,
+"name": &"black",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_upmg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lcgkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_phs0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xvv48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mbpam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_aavlf")
+}],
+"loop": true,
+"name": &"white",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2re8f"]
+
+[node name="ChessPiece" type="Node2D"]
+script = ExtResource("1_uvikv")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dxr1d")
+animation = &"white"
+speed_scale = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2re8f")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
