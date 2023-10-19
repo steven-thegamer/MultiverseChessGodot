@@ -81,6 +81,12 @@ func pawn_legal_move():
 		legal_move.append(Vector2(self.curr_pos.x,self.curr_pos.y + 2*color))
 	if cell_allowed(Vector2(self.curr_pos.x,self.curr_pos.y + color)):
 		legal_move.append(Vector2(self.curr_pos.x,self.curr_pos.y + color))
+	if cell_allowed(Vector2(self.curr_pos.x + 1, self.curr_pos.y + color)) or _owner.get_piece_occupying(Vector2(self.curr_pos.x + 1, self.curr_pos.y + color)).color != color:
+		if _owner.get_piece_occupying(Vector2(self.curr_pos.x + 1, self.curr_pos.y + color)) != null:
+			legal_move.append(Vector2(self.curr_pos.x + 1, self.curr_pos.y + color))
+	if cell_allowed(Vector2(self.curr_pos.x - 1, self.curr_pos.y + color)) or _owner.get_piece_occupying(Vector2(self.curr_pos.x - 1, self.curr_pos.y + color)).color != color:
+		if _owner.get_piece_occupying(Vector2(self.curr_pos.x - 1, self.curr_pos.y + color)) != null:
+			legal_move.append(Vector2(self.curr_pos.x -1, self.curr_pos.y + color))
 	
 	# EN PASSANT
 	# PROMOTION
