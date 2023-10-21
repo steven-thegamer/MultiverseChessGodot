@@ -21,6 +21,7 @@ var offset : Vector2
 var selected := false
 var init_pos : Vector2
 var _owner = null
+var en_passant_move = []
 
 @export var type : piece_type 
 @export var color : team
@@ -38,6 +39,7 @@ func _process(delta):
 
 func get_legal_move():
 	legal_move = []
+	en_passant_move = []
 	match(type):
 		0:
 			bishop_legal_move()
@@ -63,14 +65,21 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 			_owner.dragging = false
 			if _owner.mouse_pos in legal_move and _owner.player == color:
 				_owner.get_cell(curr_pos).remove_piece()
+				_owner.previous_piece_moved["prev_pos"] = curr_pos
 				has_moved = true
 				curr_pos = _owner.mouse_pos
+				_owner.previous_piece_moved["curr_pos"] = curr_pos
+				var attack_is_en_passant = true if type == 3 and curr_pos in en_passant_move else false
 				if _owner.check_cell_occupied(curr_pos) == true:
 					_owner.get_piece_occupying(curr_pos).queue_free()
+				elif attack_is_en_passant:
+					_owner.get_piece_occupying(Vector2(curr_pos.x,curr_pos.y - color)).queue_free()
 				_owner.get_cell(curr_pos).set_piece(self)
 				init_pos = Vector2((curr_pos.x-1)*22 + 13, (8-curr_pos.y)*22 + 13)
+				_owner.previous_piece_moved["piece"] = self
 				_owner.check_every_piece_legal_move()
 				_owner.switch_turn()
+				print(_owner.previous_piece_moved)
 			return_to_pos()
 
 func return_to_pos():
@@ -84,11 +93,19 @@ func pawn_legal_move():
 	if cell_allowed(Vector2(self.curr_pos.x + 1, self.curr_pos.y + color)) or _owner.get_piece_occupying(Vector2(self.curr_pos.x + 1, self.curr_pos.y + color)).color != color:
 		if _owner.get_piece_occupying(Vector2(self.curr_pos.x + 1, self.curr_pos.y + color)) != null:
 			legal_move.append(Vector2(self.curr_pos.x + 1, self.curr_pos.y + color))
-	if cell_allowed(Vector2(self.curr_pos.x - 1, self.curr_pos.y + color)) or _owner.get_piece_occupying(Vector2(self.curr_pos.x - 1, self.curr_pos.y + color)).color != color:
-		if _owner.get_piece_occupying(Vector2(self.curr_pos.x - 1, self.curr_pos.y + color)) != null:
-			legal_move.append(Vector2(self.curr_pos.x -1, self.curr_pos.y + color))
+	if cell_allowed(Vector2(curr_pos.x - 1, curr_pos.y + color)) or _owner.get_piece_occupying(Vector2(curr_pos.x - 1, curr_pos.y + color)).color != color:
+		if _owner.get_piece_occupying(Vector2(curr_pos.x - 1, curr_pos.y + color)) != null:
+			legal_move.append(Vector2(curr_pos.x -1, curr_pos.y + color))
 	
 	# EN PASSANT
+	if cell_allowed(Vector2(curr_pos.x+1,curr_pos.y+color)) and cell_allowed(Vector2(self.curr_pos.x + 1, self.curr_pos.y)) == false and _owner.get_piece_occupying(Vector2(self.curr_pos.x + 1, self.curr_pos.y)) == _owner.previous_piece_moved["piece"] and abs(_owner.previous_piece_moved["curr_pos"].y - _owner.previous_piece_moved["prev_pos"].y) == 2 and _owner.get_piece_occupying(Vector2(self.curr_pos.x + 1, self.curr_pos.y)).color != color:
+		legal_move.append(Vector2(curr_pos.x + 1, curr_pos.y + color))
+		en_passant_move.append(Vector2(curr_pos.x + 1, curr_pos.y + color))
+	
+	if cell_allowed(Vector2(curr_pos.x-1,curr_pos.y+color)) and cell_allowed(Vector2(self.curr_pos.x - 1, self.curr_pos.y)) == false and _owner.get_piece_occupying(Vector2(self.curr_pos.x - 1, self.curr_pos.y)) == _owner.previous_piece_moved["piece"] and abs(_owner.previous_piece_moved["curr_pos"].y - _owner.previous_piece_moved["prev_pos"].y) == 2 and _owner.get_piece_occupying(Vector2(self.curr_pos.x - 1, self.curr_pos.y)).color != color:
+		legal_move.append(Vector2(curr_pos.x - 1, curr_pos.y + color))
+		en_passant_move.append(Vector2(curr_pos.x - 1, curr_pos.y + color))
+	
 	# PROMOTION
 
 func knight_legal_move():

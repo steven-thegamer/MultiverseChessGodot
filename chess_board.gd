@@ -2,6 +2,7 @@ extends Node2D
 
 var player = 1
 var turn := 0
+var previous_piece_moved = {"piece": null, "prev_pos": null, "curr_pos": null}
 
 @onready var cells = $ChessPieceLocations
 @onready var pieces = $ChessPieces
@@ -93,10 +94,6 @@ func _ready():
 func check_every_piece_legal_move():
 	for piece in pieces.get_children():
 		piece.get_legal_move()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func switch_turn():
 	player *= -1
