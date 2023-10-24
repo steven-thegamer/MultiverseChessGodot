@@ -22,6 +22,7 @@ var selected := false
 var init_pos : Vector2
 var _owner = null
 var en_passant_move = []
+var castling_move = []
 
 @export var type : piece_type 
 @export var color : team
@@ -69,21 +70,44 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 				has_moved = true
 				curr_pos = _owner.mouse_pos
 				_owner.previous_piece_moved["curr_pos"] = curr_pos
+				
 				var attack_is_en_passant = true if type == 3 and curr_pos in en_passant_move else false
+				var move_is_castling = true if type == 1 and curr_pos in castling_move else false
+				
 				if _owner.check_cell_occupied(curr_pos) == true:
 					_owner.get_piece_occupying(curr_pos).queue_free()
 				elif attack_is_en_passant:
 					_owner.get_piece_occupying(Vector2(curr_pos.x,curr_pos.y - color)).queue_free()
+				elif move_is_castling:
+					if cell_allowed(Vector2(curr_pos.x+1,curr_pos.y)) == false and _owner.get_piece_occupying(Vector2(curr_pos.x+1,curr_pos.y)).type == 5:
+						var target_pos := Vector2(curr_pos.x-1,curr_pos.y)
+						var piece = _owner.get_piece_occupying(Vector2(curr_pos.x+1,curr_pos.y))
+						_owner.get_cell(Vector2(curr_pos.x+1,curr_pos.y)).remove_piece()
+						_owner.get_cell(target_pos).set_piece(piece)
+						_owner.get_piece_occupying(target_pos).curr_pos = target_pos
+						_owner.get_piece_occupying(target_pos).init_pos = Vector2((target_pos.x-1)*22 + 13, (8-target_pos.y)*22 + 13)
+						_owner.get_piece_occupying(target_pos).return_to_pos()
+						
+					elif cell_allowed(Vector2(curr_pos.x-2,curr_pos.y)) == false and _owner.get_piece_occupying(Vector2(curr_pos.x-2,curr_pos.y)).type == 5:
+						var target_pos := Vector2(curr_pos.x+1,curr_pos.y)
+						var piece = _owner.get_piece_occupying(Vector2(curr_pos.x-2,curr_pos.y))
+						_owner.get_cell(Vector2(curr_pos.x-2,curr_pos.y)).remove_piece()
+						_owner.get_cell(target_pos).set_piece(piece)
+						_owner.get_piece_occupying(target_pos).curr_pos = target_pos
+						_owner.get_piece_occupying(target_pos).init_pos = Vector2((target_pos.x-1)*22 + 13, (8-target_pos.y)*22 + 13)
+						_owner.get_piece_occupying(target_pos).return_to_pos()
+					
+					
 				_owner.get_cell(curr_pos).set_piece(self)
 				init_pos = Vector2((curr_pos.x-1)*22 + 13, (8-curr_pos.y)*22 + 13)
 				_owner.previous_piece_moved["piece"] = self
 				_owner.check_every_piece_legal_move()
 				_owner.switch_turn()
-				print(_owner.previous_piece_moved)
 			return_to_pos()
 
 func return_to_pos():
 	position = init_pos
+
 
 func pawn_legal_move():
 	if !has_moved and cell_allowed(Vector2(self.curr_pos.x,self.curr_pos.y + 2*color)) and cell_allowed(Vector2(self.curr_pos.x,self.curr_pos.y + color)):
@@ -224,6 +248,15 @@ func king_legal_move():
 		legal_move.append(Vector2(curr_pos.x-1,curr_pos.y+1))
 	if cell_allowed(Vector2(curr_pos.x-1,curr_pos.y-1)) or _owner.get_piece_occupying(Vector2(curr_pos.x-1,curr_pos.y-1)).color != color:
 		legal_move.append(Vector2(curr_pos.x-1,curr_pos.y-1))
+	
+	# CASTLING
+	if !has_moved:
+		if cell_allowed(Vector2(curr_pos.x-1,curr_pos.y)) and cell_allowed(Vector2(curr_pos.x-2,curr_pos.y)) and cell_allowed(Vector2(curr_pos.x-3,curr_pos.y)) and _owner.get_piece_occupying(Vector2(curr_pos.x-4,curr_pos.y)) and _owner.get_piece_occupying(Vector2(curr_pos.x+3,curr_pos.y)).type == 5:
+			castling_move.append(Vector2(curr_pos.x-2,curr_pos.y))
+			legal_move.append(Vector2(curr_pos.x-2,curr_pos.y))
+		if cell_allowed(Vector2(curr_pos.x+1,curr_pos.y)) and cell_allowed(Vector2(curr_pos.x+2,curr_pos.y)) and _owner.get_piece_occupying(Vector2(curr_pos.x+3,curr_pos.y)).has_moved == false and _owner.get_piece_occupying(Vector2(curr_pos.x+3,curr_pos.y)).type == 5:
+			castling_move.append(Vector2(curr_pos.x+2,curr_pos.y))
+			legal_move.append(Vector2(curr_pos.x+2,curr_pos.y))
 
 func cell_allowed(pos : Vector2):
 	return _owner.check_cell_occupied(pos)  == false

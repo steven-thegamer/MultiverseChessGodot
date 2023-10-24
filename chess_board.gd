@@ -48,6 +48,7 @@ func _ready():
 					piece.position = Vector2(13 + 22*x, 13 + 22*y)
 					piece._owner = self
 					pieces.add_child(piece)
+					get_cell(Vector2(x+1,8-y)).set_piece(piece)
 				1:
 					var piece = chess_piece.instantiate()
 					piece.color = -1
@@ -56,6 +57,7 @@ func _ready():
 					piece.position = Vector2(13 + 22*x, 13 + 22*y)
 					piece._owner = self
 					pieces.add_child(piece)
+					get_cell(Vector2(x+1,8-y)).set_piece(piece)
 				6:
 					var piece = chess_piece.instantiate()
 					piece.color = 1
@@ -64,6 +66,7 @@ func _ready():
 					piece.position = Vector2(13 + 22*x, 13 + 22*y)
 					piece._owner = self
 					pieces.add_child(piece)
+					get_cell(Vector2(x+1,8-y)).set_piece(piece)
 				7:
 					var piece = chess_piece.instantiate()
 					piece.color = 1
@@ -88,6 +91,7 @@ func _ready():
 					piece.position = Vector2(13 + 22*x, 13 + 22*y)
 					piece._owner = self
 					pieces.add_child(piece)
+					get_cell(Vector2(x+1,8-y)).set_piece(piece)
 	check_every_piece_legal_move()
 
 
